@@ -22,16 +22,16 @@ func main() {
 
 	sdl.SetRenderDrawColor(renderer, 100, 150, 200, 255)
 
-Outer:
-	for {
+	render := true
+	for render {
 		var event sdl.Event
 		for sdl.PollEvent(&event) {
 			switch event.Type() {
 			case sdl.EventQuit:
-				break Outer
+				render = false
 			case sdl.EventKeyDown:
 				if event.Key().Scancode == sdl.ScancodeEscape {
-					break Outer
+					render = false
 				}
 			}
 		}
